@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0b16c300-a566-4646-9b43-6855c7e6040c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1flGxhqNwk7Uv93UhZKPtNvQhFC" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/js/module" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\窃语漂流瓶自动聊天\src\js\module" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b16c300-a566-4646-9b43-6855c7e6040c" name="Default Changelist" comment="" />
+      <created>1596785513517</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596785513517</updated>
+      <workItem from="1596785516436" duration="6028000" />
+      <workItem from="1596794607202" duration="3573000" />
+      <workItem from="1596806946003" duration="73000" />
+      <workItem from="1596807163466" duration="848000" />
+      <workItem from="1597031313105" duration="1559000" />
+      <workItem from="1597056567636" duration="618000" />
+      <workItem from="1597057686982" duration="481000" />
+      <workItem from="1597116983193" duration="28000" />
+      <workItem from="1597117039464" duration="1691000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="185" key="SettingsEditor" timestamp="1597117187029">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="463" y="185" key="SettingsEditor/0.0.1920.1080/-2160.-479.720.1280@0.0.1920.1080" timestamp="1597117187029" />
+    <state x="334" y="267" width="1251" height="558" key="new project wizard" timestamp="1596807015132">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="334" y="267" width="1251" height="558" key="new project wizard/0.0.1920.1080/-2160.-479.720.1280@0.0.1920.1080" timestamp="1596807015132" />
+  </component>
+</project>
