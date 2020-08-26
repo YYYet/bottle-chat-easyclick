@@ -117,11 +117,36 @@ UIWrapper.prototype.setEvent = function (view, eventType, eventCallback) {
     }
     return false;
 };
+
+
 UIWrapper.prototype.setUIvar = function () {
     this.resetUIVar();
 }
+/**
+ * 存储数据到存储区中，脚本可以使用
+ * @param key 键
+ * @param value 值
+ * @return 布尔型 true成功 false失败
+ */
+UIWrapper.prototype.putShareData = function (key, value) {
+    return uiWrapper.putShareData2(key, value);
+}
+/**
+ * 从存储区获取在UI模块存储的数据
+ * @param key 键
+ * @return 存储的数据
+ */
+UIWrapper.prototype.getShareData = function (key) {
+    return uiWrapper.getShareData2(key);
+}
 
-
+/**
+ * 清理所有存储区的数据
+ * @return true 或者 false
+ */
+UIWrapper.prototype.clearAllShareData = function () {
+    return uiWrapper.clearAllShareData();
+}
 /**
  * 将所有的tag转换成UI的对象直接调用
  * @return {null}

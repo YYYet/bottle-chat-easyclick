@@ -201,16 +201,16 @@ ImageWrapper.prototype.readBitmap = function (path) {
  * <p>
  * 坐标系以图片左上角为原点。以图片左侧边为y轴，上侧边为x轴。
  *
- * @param image 图片
+ * @param image1 图片
  * @param x     要获取的像素的横坐标。
  * @param y     要获取的像素的纵坐标。
  * @return 整型
  */
-ImageWrapper.prototype.pixelInImage = function (image, x, y) {
-    if (imageWrapper == null || image == null) {
+ImageWrapper.prototype.pixelInImage = function (image1, x, y) {
+    if (imageWrapper == null || image1 == null) {
         return;
     }
-    return imageWrapper.pixelInImage(image.uuid, x, y);
+    return imageWrapper.pixelInImage(image1.uuid, x, y);
 };
 
 
@@ -221,7 +221,7 @@ ImageWrapper.prototype.pixelInImage = function (image, x, y) {
  * <Br/>
  * 兼容版本: Android 5.0 以上
  *
- * @param image     大图片
+ * @param image1     大图片
  * @param template  小图片（模板）
  * @param x         找图区域 x 起始坐标
  * @param y         找图区域 y 起始坐标
@@ -231,11 +231,11 @@ ImageWrapper.prototype.pixelInImage = function (image, x, y) {
  * @param limit 限制结果的数量，如果要找到1个，就填写1，如果是多个请填写多个
  * @return Rect 区域坐标对象数组或者null
  */
-ImageWrapper.prototype.findImage = function (image, template, x, y, ex, ey, threshold, limit) {
-    if (imageWrapper == null || image == null || template == null) {
+ImageWrapper.prototype.findImage = function (image1, template, x, y, ex, ey, threshold, limit) {
+    if (imageWrapper == null || image1 == null || template == null) {
         return;
     }
-    var res = imageWrapper.findImage(image.uuid, template.uuid, x, y, ex - x, ey - y, threshold, limit);
+    var res = imageWrapper.findImage(image1.uuid, template.uuid, x, y, ex - x, ey - y, threshold, limit);
     return this.toRectList(res);
 };
 
@@ -270,7 +270,7 @@ ImageWrapper.prototype.findImageEx = function (template, x, y, ex, ey, threshold
  * <Br/>
  * 兼容版本: Android 5.0 以上
  *
- * @param image         大图片
+ * @param image1         大图片
  * @param template      小图片（模板）
  * @param weakThreshold 图片相似度。取值范围为0~1的浮点数。默认值为0.9。
  * @param threshold     图片相似度。取值范围为0~1的浮点数。默认值为0.9。
@@ -280,12 +280,12 @@ ImageWrapper.prototype.findImageEx = function (template, x, y, ex, ey, threshold
  * @param limit 限制结果的数量，如果要找到1个，就填写1，如果是多个请填写多个
  * @return Match集合 匹配到的集合
  */
-ImageWrapper.prototype.matchTemplate = function (image, template, weakThreshold, threshold, rect, maxLevel, limit) {
-    if (imageWrapper == null || image == null || template == null) {
+ImageWrapper.prototype.matchTemplate = function (image1, template, weakThreshold, threshold, rect, maxLevel, limit) {
+    if (imageWrapper == null || image1 == null || template == null) {
         return;
     }
     var drect = rect == null ? null : rect.toJSONString();
-    var res = imageWrapper.matchTemplate(image.uuid, template.uuid, weakThreshold, threshold, drect, maxLevel, limit);
+    var res = imageWrapper.matchTemplate(image1.uuid, template.uuid, weakThreshold, threshold, drect, maxLevel, limit);
     if (res == null) {
         return null;
     }
@@ -339,7 +339,7 @@ ImageWrapper.prototype.matchTemplateEx = function (template, weakThreshold, thre
  * <Br/>
  * 兼容版本: Android 5.0 以上
  *
- * @param image 图片
+ * @param image1 图片
  * @param color     要寻找的颜色
  * @param threshold 找色时颜色相似度取值为 0.0 ~ 1.0
  * @param x 区域的X起始坐标
@@ -350,11 +350,11 @@ ImageWrapper.prototype.matchTemplateEx = function (template, weakThreshold, thre
  * @param orz 方向，分别从1-8
  * @return 多个Point 坐标点数组或者null
  */
-ImageWrapper.prototype.findColor = function (image, color, threshold, x, y, ex, ey, limit, orz) {
-    if (imageWrapper == null || image == null) {
+ImageWrapper.prototype.findColor = function (image1, color, threshold, x, y, ex, ey, limit, orz) {
+    if (imageWrapper == null || image1 == null) {
         return;
     }
-    var res = imageWrapper.findColor(image.uuid, color, threshold, x, y, ex - x, ey - y, limit, orz);
+    var res = imageWrapper.findColor(image1.uuid, color, threshold, x, y, ex - x, ey - y, limit, orz);
     if (res == null) {
         return null;
     }
@@ -377,8 +377,8 @@ ImageWrapper.prototype.findColor = function (image, color, threshold, x, y, ex, 
  * @param jsonFileName     res文件中取色工具生成的JSON文件，只要填写文件名称即可，后缀不用填写
  * @return 多个Point 坐标点数组或者null
  */
-ImageWrapper.prototype.findColorJ = function (image, jsonFileName) {
-    if (imageWrapper == null || image == null) {
+ImageWrapper.prototype.findColorJ = function (image1, jsonFileName) {
+    if (imageWrapper == null || image1 == null) {
         return;
     }
     var data = readResString(jsonFileName + ".json");
@@ -395,7 +395,7 @@ ImageWrapper.prototype.findColorJ = function (image, jsonFileName) {
     var limit = data['limit'];
     var orz = data['orz']
 
-    return imageWrapper.findColor(image.uuid, firstColor, threshold, x, y, ex - x, ey - y, limit, orz);
+    return imageWrapper.findColor(image1.uuid, firstColor, threshold, x, y, ex - x, ey - y, limit, orz);
 };
 
 /**
@@ -472,7 +472,7 @@ ImageWrapper.prototype.findColorExJ = function (jsonFileName) {
  * <Br/>
  * 兼容版本: Android 5.0 以上
  *
- * @param image      要找色的图片
+ * @param image1      要找色的图片
  * @param firstColor 第一个点的颜色
  * @param threshold 找色时颜色相似度取值为 0.0 ~ 1.0
  * @param points     字符串类似这样 6|1|0x969696-0x000010,1|12|0x969696,-4|0|0x969696
@@ -484,11 +484,11 @@ ImageWrapper.prototype.findColorExJ = function (jsonFileName) {
  * @param orz 方向，分别从1-8
  * @return 多个Point 坐标点数组或者null
  */
-ImageWrapper.prototype.findMultiColor = function (image, firstColor, points, threshold, x, y, ex, ey, limit, orz) {
-    if (imageWrapper == null || image == null) {
+ImageWrapper.prototype.findMultiColor = function (image1, firstColor, points, threshold, x, y, ex, ey, limit, orz) {
+    if (imageWrapper == null || image1 == null) {
         return;
     }
-    var res = imageWrapper.findMultiColor(image.uuid, firstColor, points, threshold, x, y, ex - x, ey - y, limit, orz);
+    var res = imageWrapper.findMultiColor(image1.uuid, firstColor, points, threshold, x, y, ex - x, ey - y, limit, orz);
     if (res == null) {
         return null;
     }
@@ -510,13 +510,13 @@ ImageWrapper.prototype.findMultiColor = function (image, firstColor, points, thr
  * <Br/>
  * 兼容版本: Android 5.0 以上
  *
- * @param image      要找色的图片
+ * @param image1      要找色的图片
  * @param jsonFileName res文件中取色工具生成的JSON文件，只要填写文件名称即可，后缀不用填写
  * @return 多个Point 坐标点数组或者null
  */
-ImageWrapper.prototype.findMultiColorJ = function (image, jsonFileName) {
+ImageWrapper.prototype.findMultiColorJ = function (image1, jsonFileName) {
     //String image, String firstColor, String points, float threshold, int x, int y, int w, int h,int limit
-    if (imageWrapper == null || image == null) {
+    if (imageWrapper == null || image1 == null) {
         return;
     }
     var data = readResString(jsonFileName + ".json");
@@ -533,7 +533,7 @@ ImageWrapper.prototype.findMultiColorJ = function (image, jsonFileName) {
     var ey = data['ey'];
     var limit = data['limit'];
     var orz = data['orz'];
-    return imageWrapper.findMultiColor(image.uuid, firstColor, points, threshold, x, y, ex - x, ey - y, limit, orz);
+    return imageWrapper.findMultiColor(image1.uuid, firstColor, points, threshold, x, y, ex - x, ey - y, limit, orz);
 };
 
 
@@ -607,6 +607,99 @@ ImageWrapper.prototype.findMultiColorExJ = function (jsonFileName) {
     return imageWrapper.findMultiColorCurrentScreen(firstColor, points, threshold, x, y, ex - x, ey - y, limit, orz);
 };
 
+/**
+ * 单点或者多点比色，找到所有符合标准的点，如果都符合返回true，否则是false
+ * 运行环境: 无限制
+ * <Br/>
+ * 兼容版本: Android 5.0 以上
+ *
+ * @param image1 图片
+ * @param points     字符串类似这样 6|1|0x969696-0x000010,1|12|0x969696,-4|0|0x969696
+ * @param threshold  找色时颜色相似度取值为 0.0 ~ 1.0
+ * @param x 区域的X起始坐标，默认填写0全屏查找
+ * @param y 区域的Y起始坐标，默认填写0全屏查找
+ * @param ex 终点X坐标，默认填写0全屏查找
+ * @param ey 终点Y坐标，默认填写0全屏查找
+ * @return 布尔型，true代表找到了 false代表未找到
+ */
+ImageWrapper.prototype.cmpColor = function (image1, points, threshold, x, y, ex, ey) {
+    if (imageWrapper == null || image1 == null) {
+        return -1;
+    }
+    var ad = [points];
+    var index = imageWrapper.cmpMultiColor(image1.uuid, JSON.stringify(ad), threshold, x, y, ex - x, ey - y);
+    if (index === -1) {
+        return false;
+    }
+    return true;
+};
+
+/**
+ * 单点或者多点比色，找到所有符合标准的点，默认自己截图，如果都符合返回true，否则是false
+ * 运行环境: 无限制
+ * <Br/>
+ * 兼容版本: Android 5.0 以上
+ *
+ * @param points     字符串类似这样 6|1|0x969696-0x000010,1|12|0x969696,-4|0|0x969696
+ * @param threshold  找色时颜色相似度取值为 0.0 ~ 1.0
+ * @param x 区域的X起始坐标，默认填写0全屏查找
+ * @param y 区域的Y起始坐标，默认填写0全屏查找
+ * @param ex 终点X坐标，默认填写0全屏查找
+ * @param ey 终点Y坐标，默认填写0全屏查找
+ * @return 布尔型，true代表找到了 false代表未找到
+ */
+ImageWrapper.prototype.cmpColorEx = function (points, threshold, x, y, ex, ey) {
+    if (imageWrapper == null) {
+        return -1;
+    }
+    var ad = [points];
+    var index = imageWrapper.cmpMultiColorCurrentScreen(JSON.stringify(ad), threshold, x, y, ex - x, ey - y);
+    if (index === -1) {
+        return false;
+    }
+    return true;
+};
+
+/**
+ * 多点或者多点数组比色，找到所有符合标准的点，依次查找，如果找到就返回当前points的索引值，如果返回-1，说明都没有找到
+ * 运行环境: 无限制
+ * <Br/>
+ * 兼容版本: Android 5.0 以上
+ * @param image1 图片
+ * @param points     数组类似这样 ["6|1|0x969696-0x000010,1|12|0x969696,-4|0|0x969696","6|1|0x969696"]
+ * @param threshold  找色时颜色相似度取值为 0.0 ~ 1.0
+ * @param x 区域的X起始坐标，默认填写0全屏查找
+ * @param y 区域的Y起始坐标，默认填写0全屏查找
+ * @param ex 终点X坐标，默认填写0全屏查找
+ * @param ey 终点Y坐标，默认填写0全屏查找
+ * @return 整型，如果找到就返回当前points的索引值，如果返回-1，说明都没有找到
+ */
+ImageWrapper.prototype.cmpMultiColor = function (image1, points, threshold, x, y, ex, ey) {
+    if (imageWrapper == null || image1 == null) {
+        return -1;
+    }
+    return imageWrapper.cmpMultiColor(image1.uuid, JSON.stringify(points), threshold, x, y, ex - x, ey - y);
+};
+/**
+ * 多点或者多点数组比色，找到所有符合标准的点，自动截屏，依次查找，如果找到就返回当前points的索引值，如果返回-1，说明都没有找到
+ * 运行环境: 无限制
+ * <Br/>
+ * 兼容版本: Android 5.0 以上
+ * @param points     数组类似这样 ["6|1|0x969696-0x000010,1|12|0x969696,-4|0|0x969696","6|1|0x969696"]
+ * @param threshold  找色时颜色相似度取值为 0.0 ~ 1.0
+ * @param x 区域的X起始坐标，默认填写0全屏查找
+ * @param y 区域的Y起始坐标，默认填写0全屏查找
+ * @param ex 终点X坐标，默认填写0全屏查找
+ * @param ey 终点Y坐标，默认填写0全屏查找
+ * @return 整型，如果找到就返回当前points的索引值，如果返回-1，说明都没有找到
+ */
+ImageWrapper.prototype.cmpMultiColorEx = function (points, threshold, x, y, ex, ey) {
+    if (imageWrapper == null) {
+        return -1;
+    }
+    return imageWrapper.cmpMultiColorCurrentScreen(JSON.stringify(points), threshold, x, y, ex - x, ey - y);
+};
+
 
 /**
  * 取得宽度
@@ -640,7 +733,7 @@ ImageWrapper.prototype.getHeight = function (img) {
  */
 ImageWrapper.prototype.saveTo = function (img, path) {
     if (img == null) {
-        return 0;
+        return false;
     }
     return imageWrapper.saveTo(img.uuid, path);
 };
@@ -653,7 +746,21 @@ ImageWrapper.prototype.toBase64 = function (img) {
     if (img == null) {
         return null;
     }
-    return javaString2string(imageWrapper.toBase64(img.uuid));
+    return javaString2string(imageWrapper.toBase64(img.uuid, "jpg", 100));
+};
+
+/**
+ *  转成base64的字符串, jpg格式较小，可以减少内存
+ * @param img 图片对象
+ * @param format 格式  jpg或者 png
+ * @param q 质量  1-100，质量越大 越清晰
+ * @return 字符串
+ */
+ImageWrapper.prototype.toBase64Format = function (img, format, q) {
+    if (img == null) {
+        return null;
+    }
+    return javaString2string(imageWrapper.toBase64(img.uuid, format, q));
 };
 /**
  * 剪切图片
@@ -758,4 +865,52 @@ ImageWrapper.prototype.toRectList = function (res) {
         d.push(new Rect(ps[i]));
     }
     return d;
+};
+
+/**
+ * 对AutoImage图片进行二值化
+ * @param img AutoImage图片对象
+ * @param type 二值化类型，一般写1即可
+ * 0    灰度值大于阈值为最大值，其他值为<br/>
+ * 1    灰度值大于阈值为0，其他值为最大值<br/>
+ * 2    灰度值大于阈值的为阈值，其他值不变<br/>
+ * 3    灰度值大于阈值的不变，其他值为0<br/>
+ * 4    灰度值大于阈值的为零，其他值不变<br/>
+ * 7    暂不支持<br/>
+ * 8    大津法自动寻求全局阈值<br/>
+ * 16    三角形法自动寻求全局阈值<br/>
+ * @param threshold 二值化系数，0 ~ 255
+ * @return AutoImage 对象或者null
+ */
+ImageWrapper.prototype.binaryzation = function (img, type, threshold) {
+    if (img == null) {
+        return null;
+    }
+    var xd = imageWrapper.binaryzation(img.uuid, type, threshold);
+    if (xd != null) {
+        return new AutoImage(javaString2string(xd));
+    }
+    return null;
+};
+
+/**
+ * 对安卓的 Bitmap 图片进行二值化
+ * @param bitmap Bitmap 图片对象
+ * @param type 二值化类型，一般写1即可
+ * 0    灰度值大于阈值为最大值，其他值为<br/>
+ * 1    灰度值大于阈值为0，其他值为最大值<br/>
+ * 2    灰度值大于阈值的为阈值，其他值不变<br/>
+ * 3    灰度值大于阈值的不变，其他值为0<br/>
+ * 4    灰度值大于阈值的为零，其他值不变<br/>
+ * 7    暂不支持<br/>
+ * 8    大津法自动寻求全局阈值<br/>
+ * 16    三角形法自动寻求全局阈值<br/>
+ * @param threshold 二值化系数，0 ~ 255
+ * @return Bitmap 对象或者null
+ */
+ImageWrapper.prototype.binaryzationBitmap = function (bitmap, type, threshold) {
+    if (img == null) {
+        return null;
+    }
+    return imageWrapper.binaryzationBitmap(bitmap, type, threshold);
 };

@@ -167,6 +167,17 @@ HttpWrapper.prototype.request = function (param) {
     return new Response(JSON.parse(x));
 };
 
+HttpWrapper.prototype.requestEx = function (param) {
+    if (httpWrapper == null || param == null) {
+        return null;
+    }
+    var p = JSON.stringify(param);
+    var x = httpWrapper.requestEx(p);
+    if (x == null) {
+        return null;
+    }
+    return new Response(JSON.parse(x));
+};
 
 function Response(data) {
     this.cookie = {};

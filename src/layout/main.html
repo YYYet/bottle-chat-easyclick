@@ -13,59 +13,65 @@
 </head>
 <body style="margin-left: 10px;margin-right: 10px">
 <div class="alert alert-primary" role="alert">
-    本页面由materializecss构建： <a href="http://www.materializecss.cn/">http://www.materializecss.cn</a>
+    本页面由小辰网络构建： <a href="mqqwpa://im/chat?chat_type=wpa&uin=48924676&version=1&src_type=web&web_src=http:://wpa.b.qq.com">脚本定制联系</a>
 </div>
 
 
 <div class="card-panel">
     <span class="card-title">基本信息</span>
     <div class="row s12 ">
-        <div class="input-field  inline col s4">
-            <input id="name" type="text" class="validate">
-            <label for="name">时间(秒)</label>
-        </div>
+
 
     </div>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
 
+                <span class="label label-default">时间(秒):</span>
+                <input id="name" type="text" class="validate">
+                <span class="label label-default">捡瓶子数量:</span>
+                <input id="num" type="text" class="validate">
+                <span class="label label-default">捡瓶子间隔(秒):</span>
+                <input id="bootletime" type="text" class="validate">
+                <span class="label label-default">瓶子回复:</span>
+                <input id="bootlereply" type="text" class="validate">
+                <span class="label label-default">聊天时长(分):</span>
+                <input id="bootletimer" type="text" class="validate">
+
+
+                <span class="label label-default">收到图片回复:</span>
+                <input id="picreply" type="text" class="validate" >
+
+
+
+                <span class="label label-default">未匹配到关键字回复:</span>
+                <input id="noreply" type="text" class="validate">
+
+            </div>
+        </div>
+    </div>
 </div>
 
-    <div class="row s12 " >
+
         <div class="input-field  inline col s4">
-            <input id="picreply" type="text" class="validate" >
-            <label for="picreply">收到图片回复</label>
+
         </div>
 
-    </div>
-    <div class="row s12 ">
-        <div class="input-field  inline col s4">
-            <input id="noreply" type="text" class="validate">
-            <label for="noreply">未匹配到关键字回复</label>
+
+
+        <div class="input-field  inline col s4" >
+
         </div>
 
-    </div>
+
 <p>
     <span>日期选择器</span>
     <input type="text" class="datepicker" format="yyyy-MM-dd">
 
 </p>
-<div class="col s12">
-    横排演示:
-    <div class="input-field inline">
-        <input type="text" class="validate" style="width: 50px">
-        <label>从</label>
-    </div>
-    <span>到</span>
-    <div class="input-field inline">
-        <input type="text" class="validate" style="width: 30px">
-        <label>这里</label>
-    </div>
-</div>
 
 <br/>
-<div class="input-field col s12">
-    <textarea id="mark" name="mark" class="materialize-textarea" data-length="120"></textarea>
-    <label for="mark">备注</label>
-</div>
+
 <div class="row">
 
     <div class="col s6">
@@ -102,42 +108,20 @@
         var noreply = window.ec.getConfig("noreply");
         $("#noreply").val(noreply);
 
-        var mark = window.ec.getConfig("mark");
-        $("#mark").val(mark);
+        var name = window.ec.getConfig("name");
+        $("#name").val(name);
 
-        var age = window.ec.getConfig("age");
-        $("#age").val(age);
-        var one = window.ec.getConfig("one");
-        if (one === "true") {
-            $("#one").attr("checked", "checked");
-        }
-        var two = window.ec.getConfig("two");
-        if (two === "true") {
-            $("#two").attr("checked", "checked");
-        }
-        var three = window.ec.getConfig("three");
-        if (three === "true") {
-            $("#three").attr("checked", "checked");
-        }
+        var num = window.ec.getConfig("num");
+        $("#num").val(num);
 
-        var music = window.ec.getConfig("music");
-        if (music === "true") {
-            $("#music").attr("checked", "checked");
-        }
+        var bootletime = window.ec.getConfig("bootletime");
+        $("#bootletime").val(bootletime);
 
-        var sing = window.ec.getConfig("sing");
-        if (sing === "true") {
-            $("#sing").attr("checked", "checked");
-        }
+        var bootlereply = window.ec.getConfig("bootlereply");
+        $("#bootlereply").val(bootlereply);
 
-        var dance = window.ec.getConfig("dance");
-        if (dance === "true") {
-            $("#dance").attr("checked", "checked");
-        }
-
-        var sex = window.ec.getConfig("sex");
-        $("select[name=sex]").find("option[value='" + sex + "']").attr("selected", true);
-
+        var bootletimer = window.ec.getConfig("bootletimer");
+        $("#bootletimer").val(bootletimer);
 
         window.ec.hideStartBtn();
     });
@@ -156,6 +140,19 @@
         var noreply = $("#noreply").val();
         window.ec.saveConfig("noreply", noreply);
 
+
+
+        var num = $("#num").val();
+        window.ec.saveConfig("num", num);
+
+        var bootletime = $("#bootletime").val();
+        window.ec.saveConfig("bootletime", bootletime);
+
+        var bootlereply = $("#bootlereply").val();
+        window.ec.saveConfig("bootlereply", bootlereply);
+
+        var bootletimer = $("#bootletimer").val();
+        window.ec.saveConfig("bootletimer", bootletimer);
 /*
         //一年级
         window.ec.saveConfig("one", $("#one").prop("checked"));

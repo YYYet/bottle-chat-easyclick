@@ -210,6 +210,19 @@ function exit() {
 }
 
 /**
+ * 重启脚本，适合无限循环，或者有异常的情况可以下载最新的iec再次执行，避免进入UI才能热更新,
+ * 注意: 该方法威力巨大，请自行控制好是否自动重启，否则只能强杀进程才能停止
+ * @param path 新的IEC路径，如果不需要可以填写null
+ * @param stopCurrent 是否停止当前的脚本
+ * @param delay 延迟多少秒后执行
+ * @return bool true 代表成功 false 代表失败
+ */
+function restartScript(path, stopCurrent, delay) {
+    return ecImporter.restartScript(path, stopCurrent, delay);
+}
+
+
+/**
  * 保存res文件夹中的资源文件到指定的路径
  * @param fileName 文件名称，不要加res前缀
  * @param path 要保存到的路径地址，例如/sdcard/aa.txt
